@@ -22,7 +22,10 @@
     "cloudfront:build:deploy:nc": "npm run client:build:deploy:nc && npm run cloudfront:invalidateCache",
     "cloudfront:update:build:deploy": "npm run cloudfront:setup && npm run cloudfront:build:deploy",
     "cloudfront:update:build:deploy:nc": "npm run cloudfront:setup && npm run cloudfront:build:deploy:nc",
-    "serverless:remove": "sls remove"
+    "serverless:remove": "sls remove",
+    "// Please use belowmentioned commands this way": "export AZURE_STORAGE_ACCOUNTP=[storage account name] &&  [command]",
+    "azure:deploy": "az storage blob upload-batch -s dist -d $web --account-name %AZURE_STORAGE_ACCOUNTP% --overwrite",
+    "azure:build:deploy": "npm run build && npm run azure:deploy"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
