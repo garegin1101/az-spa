@@ -1,0 +1,22 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prestart": "npm run build",
+    "start": "func start",
+    "test": "echo \"No tests yet...\"",
+    "// Please use belowmentioned commands this way": "export [variable name]=[value name] &&  [command]",
+    "azure:add-slot" : "az functionapp deployment slot auto-swap --slot %SLOT_NAME%",
+    "azure:auto-swap" : "az functionapp deployment slot auto-swap  --name %FUNCTION_APP_NAME% --resource-group %RESOURCE_GROUP_NAME% --slot %SLOT_NAME%"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@azure/functions": "^3.0.0",
+    "azure-functions-core-tools": "^4.x",
+    "@types/node": "18.x",
+    "typescript": "^4.0.0"
+  }
+}

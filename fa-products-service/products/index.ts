@@ -1,0 +1,61 @@
+type Product = {
+    id: string;
+    title: string;
+    description: string;
+    price: number;
+};
+
+const productList: Product[] = [
+    { id: "1", title: "Product 1", description: "Description for Product 1", price: 20 },
+    { id: "2", title: "Product 2", description: "Description for Product 2", price: 30 },
+    { id: "3", title: "Product 3", description: "Description for Product 3", price: 25 },
+    { id: "4", title: "Product 4", description: "Description for Product 4", price: 15 },
+    { id: "5", title: "Product 5", description: "Description for Product 5", price: 35 },
+    { id: "6", title: "Product 6", description: "Description for Product 6", price: 22 },
+    { id: "7", title: "Product 7", description: "Description for Product 7", price: 18 },
+    { id: "8", title: "Product 8", description: "Description for Product 8", price: 28 },
+    { id: "9", title: "Product 9", description: "Description for Product 9", price: 33 },
+    { id: "10", title: "Product 10", description: "Description for Product 10", price: 40 },
+    { id: "11", title: "Product 11", description: "Description for Product 11", price: 19 },
+    { id: "12", title: "Product 12", description: "Description for Product 12", price: 27 },
+    { id: "13", title: "Product 13", description: "Description for Product 13", price: 23 },
+    { id: "14", title: "Product 14", description: "Description for Product 14", price: 17 },
+    { id: "15", title: "Product 15", description: "Description for Product 15", price: 32 },
+    { id: "16", title: "Product 16", description: "Description for Product 16", price: 21 },
+    { id: "17", title: "Product 17", description: "Description for Product 17", price: 26 },
+    { id: "18", title: "Product 18", description: "Description for Product 18", price: 24 },
+    { id: "19", title: "Product 19", description: "Description for Product 19", price: 29 },
+    { id: "20", title: "Product 20", description: "Description for Product 20", price: 37 },
+    { id: "21", title: "Product 21", description: "Description for Product 21", price: 16 },
+    { id: "22", title: "Product 22", description: "Description for Product 22", price: 31 },
+    { id: "23", title: "Product 23", description: "Description for Product 23", price: 36 },
+    { id: "24", title: "Product 24", description: "Description for Product 24", price: 14 },
+    { id: "25", title: "Product 25", description: "Description for Product 25", price: 38 },
+    { id: "26", title: "Product 26", description: "Description for Product 26", price: 34 },
+    { id: "27", title: "Product 27", description: "Description for Product 27", price: 13 },
+    { id: "28", title: "Product 28", description: "Description for Product 28", price: 39 },
+    { id: "29", title: "Product 29", description: "Description for Product 29", price: 12 },
+    { id: "30", title: "Product 30", description: "Description for Product 30", price: 45 },
+    { id: "31", title: "Product 31", description: "Description for Product 31", price: 42 },
+    { id: "32", title: "Product 32", description: "Description for Product 32", price: 46 },
+    { id: "33", title: "Product 33", description: "Description for Product 33", price: 11 },
+    { id: "34", title: "Product 34", description: "Description for Product 34", price: 43 },
+    { id: "35", title: "Product 35", description: "Description for Product 35", price: 44 },
+    { id: "36", title: "Product 36", description: "Description for Product 36", price: 41 },
+    { id: "37", title: "Product 37", description: "Description for Product 37", price: 50 },
+    { id: "38", title: "Product 38", description: "Description for Product 38", price: 48 },
+    { id: "39", title: "Product 39", description: "Description for Product 39", price: 49 },
+    { id: "40", title: "Product 40", description: "Description for Product 40", price: 47 },
+    { id: "41", title: "Product 41", description: "Description for Product 41", price: 55 },
+    { id: "42", title: "Product 42", description: "Description for Product 42", price: 54 },
+    { id: "43", title: "Product 43", description: "Description for Product 43", price: 52 },
+    { id: "44", title: "Product 44", description: "Description for Product 44", price: 51 },
+    { id: "45", title: "Product 45", description: "Description for Product 45", price: 53 },
+    { id: "46", title: "Product 46", description: "Description for Product 46", price: 58 },
+    { id: "47", title: "Product 47", description: "Description for Product 47", price: 59 },
+    { id: "48", title: "Product 48", description: "Description for Product 48", price: 57 },
+    { id: "49", title: "Product 49", description: "Description for Product 49", price: 56 },
+    { id: "50", title: "Product 50", description: "Description for Product 50", price: 60 },
+];
+
+export default productList;
