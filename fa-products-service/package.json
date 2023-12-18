@@ -9,7 +9,8 @@
     "start": "func start",
     "test": "echo \"No tests yet...\"",
     "// Please use belowmentioned commands this way": "export [variable name]=[value name] &&  [command]",
-    "azure:add-slot" : "az functionapp deployment slot auto-swap --slot %SLOT_NAME%",
+    "azure:publish" : "func azure functionapp publish %FUNCTION_APP_NAME%",
+    "azure:add-slot" : "az functionapp deployment slot create  --name %FUNCTION_APP_NAME% --resource-group %RESOURCE_GROUP_NAME% --slot %SLOT_NAME%",
     "azure:auto-swap" : "az functionapp deployment slot auto-swap  --name %FUNCTION_APP_NAME% --resource-group %RESOURCE_GROUP_NAME% --slot %SLOT_NAME%"
   },
   "dependencies": {},
