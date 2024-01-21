@@ -185,3 +185,89 @@ resource "azurerm_cosmosdb_sql_container" "stocks" {
     }
   }
 }
+
+resource "azurerm_storage_account" "import_service_fa" {
+  name     = "garegin98u78"
+  location = "northeurope"
+
+  account_replication_type = "LRS"
+  account_tier             = "Standard"
+  account_kind             = "StorageV2"
+
+  resource_group_name = azurerm_resource_group.product_service_rg.name
+
+  enable_https_traffic_only        = true
+  allow_nested_items_to_be_public  = true
+  shared_access_key_enabled        = true
+}
+
+resource "azurerm_storage_container" "import_service_fa_container" {
+  name                  = "my-container"
+  storage_account_name  = azurerm_storage_account.import_service_fa.name
+  container_access_type = "private"
+}
+
+resource "azurerm_storage_share" "import_service_fa" {
+  name  = "fa-import-service-share"
+  quota = 2
+
+  storage_account_name = azurerm_storage_account.import_service_fa.name
+}
+
+resource "azurerm_application_insights" "import_service_fa" {
+  name             = "appins-fa-import-service-sand-ne-001"
+  application_type = "web"
+  location         = "northeurope"
+
+
+  resource_group_name = azurerm_resource_group.product_service_rg.name
+}
+
+resource "azurerm_windows_function_app" "import_service" {
+  name     = "fa-import-service-ne-001aaaaaa"
+  location = "northeurope"
+
+  service_plan_id     = azurerm_service_plan.product_service_plan.id
+  resource_group_name = azurerm_resource_group.product_service_rg.name
+
+  storage_account_name       = azurerm_storage_account.import_service_fa.name
+  storage_account_access_key = azurerm_storage_account.import_service_fa.primary_access_key
+
+  functions_extension_version = "~4"
+  builtin_logging_enabled     = false
+
+  site_config {
+    always_on = false
+
+    application_insights_key               = azurerm_application_insights.import_service_fa.instrumentation_key
+    application_insights_connection_string = azurerm_application_insights.import_service_fa.connection_string
+
+    # For production systems set this to false
+    use_32_bit_worker = true
+
+    # Enable function invocations from Azure Portal.
+    cors {
+      allowed_origins = ["https://portal.azure.com", "https://gareginfrontend001.z16.web.core.windows.net"]
+    }
+
+    application_stack {
+      node_version = "~16"
+    }
+  }
+
+  app_settings = {
+    WEBSITE_CONTENTAZUREFILECONNECTIONSTRING = azurerm_storage_account.import_service_fa.primary_connection_string
+    WEBSITE_CONTENTSHARE                     = azurerm_storage_share.import_service_fa.name
+  }
+
+  # The app settings changes cause downtime on the Function App. e.g. with Azure Function App Slots
+  # Therefore it is better to ignore those changes and manage app settings separately off the Terraform.
+  lifecycle {
+    ignore_changes = [
+      app_settings,
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
+      tags["hidden-link: /app-insights-conn-string"]
+    ]
+  }
+}
