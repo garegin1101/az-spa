@@ -1,0 +1,21 @@
+{
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "garegin_servicebus_queue",
+      "connection": "<Connection string>"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputDocument",
+      "databaseName": "products-db",
+      "collectionName": "products",
+      "createIfNotExists": true,
+      "connectionStringSetting": "<Connection String>"
+    }
+  ],
+  "scriptFile": "../dist/service-bus-import-product/index.js"
+}
